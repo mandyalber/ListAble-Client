@@ -1,0 +1,13 @@
+.todo{
+    list-style: none;
+}
+.todo li {
+    padding: 5px;  
+}
+
+.todo button {
+    padding: 5px;
+    margin: 3px;
+    font-size: 10px;
+    border-radius: 50%;
+}

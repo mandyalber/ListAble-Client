@@ -1,0 +1,17 @@
+ul.category {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+ul.category a {
+    flex: 1;
+    padding: 5%;
+    border: 1px solid black;
+    margin: 0 5% 0 0;
+    justify-content: space-between;
+}
+
+.create-list {
+    width: 100%;
+}
