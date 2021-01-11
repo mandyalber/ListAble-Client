@@ -1,27 +1,26 @@
 import React from 'react'
+import ListContext from '../ListContext'
 import './CreateList.css'
 
+function getHTMLOptions (array) {
+    return array.map((item, idx) => <option key={idx + 1} value={item.id}>{item.name}</option>)
+}
+
 export default function CreateList(props) {
+    const { categoryState } = React.useContext(ListContext)
+    const options = getHTMLOptions(categoryState)
 
     //api call to post new list
 
     return (
-        <form class="create-list">
+        <form className="create-list">
             <fieldset>
                 <legend>Create a new List:</legend>
-                <label for="name">List Title: </label>
+                <label htmlFor="name">List Title: </label>
                 <input id="name" type="text" />
-                <label for="category">Category: </label>
+                <label htmlFor="category">Category: </label>
                 <select id="category">
-                    <option>Shopping List</option>
-                    <option>Wish List</option>
-                    <option>Gift List</option>
-                    <option>Reading List</option>
-                    <option>To Do List</option>
-                    <option>Chore List</option>
-                    <option>Homework/Project task List</option>
-                    <option>Goal List</option>
-                    <option>Custom List</option>
+                    {options}
                 </select>
                 <input type="submit" value="Submit" />
             </fieldset>

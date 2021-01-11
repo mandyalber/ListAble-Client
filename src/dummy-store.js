@@ -11,6 +11,26 @@ export default {
         {
             "id": "3",
             "name": "Reading"
+        },
+        {
+            "id": "4",
+            "name": "Wishes"
+        },
+        {
+            "id": "5",
+            "name": "Gifts"
+        },
+        {
+            "id": "6",
+            "name": "Chores"
+        },
+        {
+            "id": "7",
+            "name": "Goals"
+        },
+        {
+            "id": "8",
+            "name": "Projects"
         }
     ],
     "lists": [
