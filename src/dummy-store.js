@@ -14,23 +14,23 @@ export default {
         },
         {
             "id": "4",
-            "name": "Wishes"
+            "name": "Wish"
         },
         {
             "id": "5",
-            "name": "Gifts"
+            "name": "Gift"
         },
         {
             "id": "6",
-            "name": "Chores"
+            "name": "Chore"
         },
         {
             "id": "7",
-            "name": "Goals"
+            "name": "Goal"
         },
         {
             "id": "8",
-            "name": "Projects"
+            "name": "Project"
         }
     ],
     "lists": [

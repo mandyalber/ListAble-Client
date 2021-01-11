@@ -6,8 +6,8 @@ import './ListDetail.css'
 export default function ListDetail({ match }) {
 
     const { listState, itemState } = React.useContext(ListContext)
-    //let list = listState.filter(list => list.id === match.params.listId)
-
+    //const list = listState.filter(list => list.id === match.params.listId) || {}
+    
     let list = {}
     for (let i = 0; i < listState.length; i++) {
         if (listState[i].id === match.params.listId) {
@@ -23,13 +23,22 @@ export default function ListDetail({ match }) {
                 <button>Delete</button>
             </li>) : ''
 
+    if (list.id) {
+
+        return (
+            <main>
+                <Link to="/dashboard">Back to Dashboard</Link>
+                <h2>{list.name}</h2>
+                <ul className="todo">{items}</ul>
+                <input type="text" id="addItem" />
+                <button>Add Item</button>
+            </main>
+        )
+    }
     return (
         <main>
             <Link to="/dashboard">Back to Dashboard</Link>
-            <h2>{list.name}</h2>
-            <ul className="todo">{items}</ul>
-            <input type="text" id="addItem" />
-            <button>Add Item</button>
+            <p>List not Found</p>
         </main>
     )
 }

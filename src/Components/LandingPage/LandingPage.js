@@ -1,19 +1,21 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './LandingPage.css'
 
 export default function LandingPage (props){
 
     return (
         <main>
         <h2>Welcome to ListAble!</h2>
-            <p>Now you can keep all your list types in one spot for easy retrieval! Choose from one of the categories
-                below or create your own custom categories.</p>
-            <ul>
-                <li>Shopping lists (organize by store, and sort into aisles/dept!)</li>
+            <p>Keep all your lists in one spot for easy retrieval! Create lists and categories to organize and keep track of everything you need to get done!</p>
+
+            <p>Some examples of possible list categories include:</p> 
+            <ul className="sample-list">
+                <li>Shopping lists (organize by store!)</li>
                 <li>Wish Lists</li>
                 <li>Gift Lists</li>
                 <li>Reading Lists</li>
-                <li>To Do Lists (optionally enter due dates)</li>
+                <li>To Do Lists</li>
                 <li>Chore Lists (keep everyone in the family accountable!)</li>
                 <li>Homework/Project task lists</li>
                 <li>Goal List (don't lose sight of your short and long term goals!)</li>
