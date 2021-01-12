@@ -6,14 +6,7 @@ import './ListDetail.css'
 export default function ListDetail({ match }) {
 
     const { listState, itemState } = React.useContext(ListContext)
-    //const list = listState.filter(list => list.id === match.params.listId) || {}
-    
-    let list = {}
-    for (let i = 0; i < listState.length; i++) {
-        if (listState[i].id === match.params.listId) {
-            list = listState[i]
-        }
-    }
+    const list = listState.filter(list => list.id === match.params.listId).pop() || {id: null}
     const items = itemState.length ? itemState.filter(item => item.listId === list.id)
         .map(item =>
             <li key={item.id}>
@@ -24,7 +17,6 @@ export default function ListDetail({ match }) {
             </li>) : ''
 
     if (list.id) {
-
         return (
             <main>
                 <Link to="/dashboard">Back to Dashboard</Link>

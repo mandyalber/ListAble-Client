@@ -55,6 +55,7 @@ export default {
             "categoryId": "2"
         },
     ],
+    // list_items list_id, item_id - associative/pivot tables
     "items": [
         {
             "id": "1",

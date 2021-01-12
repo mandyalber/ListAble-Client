@@ -4,6 +4,10 @@ import React from 'react'
     categoryState: [],
     listState: [],
     itemState: [],
+    setCategoryState: ()=> {},
+    setListState: ()=> {},
+    setItemState: ()=> {},
+
 })
 
 export default ListContext

@@ -23,7 +23,10 @@ function App() {
   const contextValue = {
     categoryState,
     listState,
-    itemState
+    itemState, 
+    setCategoryState,
+    setListState,
+    setItemState
   }
 
   return (
@@ -31,7 +34,7 @@ function App() {
       <div className="App">
         <header><h1>ListAble</h1></header>
         <Switch>
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path={["/dashboard","/category/:categoryId"]} component={Dashboard} />
           <Route path="/category/:categoryId" component={Dashboard} />
           <Route path="/list/:listId" component={ListDetail} />
           <Route path="/" component={LandingPage} />
