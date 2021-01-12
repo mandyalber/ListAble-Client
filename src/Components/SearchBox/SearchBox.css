@@ -2,3 +2,16 @@
     display: inline;
     float: left;
 }
+
+.searchbox input[type=text]{
+    width: 100px;
+    margin-right: 5px;
+}
+
+.searchbox input[type=text]::placeholder {
+    font-style: italic;
+}
+
+.searchbox p {
+    color: red;
+}

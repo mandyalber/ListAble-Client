@@ -20,3 +20,8 @@ ul.category li {
     padding: 0;
     margin: 0;
 }
+
+.create-category input[type=text]{
+    width: 100px;
+    margin-right: 5px;
+}
