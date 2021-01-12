@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import ListContext from '../ListContext'
-import './ListDetail.css'
+import './Item.css'
 
 export default function Item(props) {
     const { itemState, setItemState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
     const [item, setItem] = useState(props.name)
+    const [complete, setComplete] = useState(false)
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
@@ -31,15 +32,15 @@ export default function Item(props) {
         handleEdit()
     }
 
-    const completedTodo = (id) => {
+    const handleCheckClick = (id) => {
         const newItems = itemState.map(item => {
             if (item.id === id) {
-                item.completed = !item.completed
+                item.complete = !item.complete
             }
             return item
         })
-
         setItemState(newItems)
+        setComplete(!complete)
     }
 
     return (
@@ -47,14 +48,14 @@ export default function Item(props) {
             {!edit ? (
                 <>
                     <input type="checkbox"
-                        checked={props.completed}
-                        onChange={() => completedTodo(props.id)}
-                        disabled={props.completed ? true : false}
+                        checked={props.complete}
+                        onChange={() => handleCheckClick(props.id)}
+                        disabled={props.complete ? true : false}
                     />
-                    {props.name}
+                    <span className={complete ? "complete" : null}>{props.name}</span>
                     <button
                         onClick={handleEdit}
-                        disabled={props.completed}>Edit
+                        disabled={complete}>Edit
                     </button>
                     <button
                         name="delete"
@@ -62,8 +63,7 @@ export default function Item(props) {
                         onClick={handleDeleteClick}>Delete
                 </button>
                 </>
-            )
-                :
+            ) :
                 (
                     <>{" "}
                         <input type="text" value={item} onChange={handleEditChange} />

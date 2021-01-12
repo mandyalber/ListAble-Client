@@ -23,7 +23,7 @@ export default function CreateList(props) {
 
     return (
         <form className="create-list" onSubmit={handleSubmitClick}>
-            <input type="text" id="addItem" />
+            <input type="text" id="addItem" required/>
             <button>Add Item</button>
         </form>
     )

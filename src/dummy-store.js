@@ -61,61 +61,61 @@ export default {
             "id": "1",
             "name": "Go for a run",
             "listId": "1",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "2",
             "name": "Cats",
             "listId": "3",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "3",
             "name": "Pigs",
             "listId": "3",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "4",
             "name": "Pick up dry cleaning",
             "listId": "1",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "5",
             "name": "Buy more ice cream",
             "listId": "1",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "6",
             "name": "Milk",
             "listId": "2",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "7",
             "name": "Diapers",
             "listId": "4",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "8",
             "name": "Chicken",
             "listId": "4",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "9",
             "name": "Bread",
             "listId": "2",
-            "complete": "false"
+            "complete": false
         },
         {
             "id": "10",
             "name": "Eggs",
             "listId": "4",
-            "complete": "True"
+            "complete": true
         },
     ]
 }

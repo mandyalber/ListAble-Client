@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ListContext from '../ListContext'
+import Category from './Category'
 import './CategoryNav.css'
 
 export default function CategoryNav(props) {
@@ -11,10 +12,7 @@ export default function CategoryNav(props) {
 
     const { categoryState, setCategoryState } = React.useContext(ListContext)
     const categories = categoryState.map(cat =>
-        <li key={cat.id}>
-            <NavLink to={`/category/${cat.id}`}>{cat.name}</NavLink>
-            <button name="delete" value={cat.id} onClick={handleDeleteClick}>X</button>
-        </li>)
+        <li key={cat.id}><Category id={cat.id} name={cat.name}/></li>)
 
     if (categories.length) {
         return <ul className="category">
