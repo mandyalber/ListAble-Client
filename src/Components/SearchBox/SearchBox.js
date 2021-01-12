@@ -3,11 +3,10 @@ import './SearchBox.css'
 
 export default function Dashboard(props) {
     return (
-        <form action="#">
+        <form className="searchbox">
             <fieldset>
-                <label htmlFor="searchbox">Search: </label>
-                <input id="username" type="text" />
-                <button>Submit</button>
+                <input id="searchbox" type="text" />
+                <button>Search</button>
             </fieldset>
         </form>
     )

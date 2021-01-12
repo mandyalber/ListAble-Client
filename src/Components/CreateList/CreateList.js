@@ -24,6 +24,8 @@ export default function CreateList(props) {
         //add api call to post new list
 
         setListState([...listState, newList])
+
+        e.target.listname.value = ''
     }
 
     return (

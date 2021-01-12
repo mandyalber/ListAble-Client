@@ -4,6 +4,7 @@ ul.category {
     list-style: none;
     overflow: auto;
     white-space: nowrap;
+    width: 100%;
 }
 
 ul.category li {
@@ -11,4 +12,11 @@ ul.category li {
     padding: 5%;
     border: 1px solid black;
     margin: 0 5% 0 0;    
+}
+
+.create-category {
+    display: inline;
+    float:right;
+    padding: 0;
+    margin: 0;
 }
