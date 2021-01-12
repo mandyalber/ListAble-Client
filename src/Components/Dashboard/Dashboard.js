@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import CreateList from '../CreateList/CreateList'
-import List from './ListDisplay'
 import SearchBox from '../SearchBox/SearchBox'
 import ListContext from '../ListContext'
 import './Dashboard.css'
