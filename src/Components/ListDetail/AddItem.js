@@ -1,6 +1,6 @@
 import React from 'react'
 import ListContext from '../ListContext'
-import { v4 as uuidv4 } from 'uuid';
+import config from '../../config'
 
 export default function CreateList(props) {
     const { itemState, setItemState } = React.useContext(ListContext)
@@ -8,16 +8,25 @@ export default function CreateList(props) {
     const handleSubmitClick = (e) => {
         e.preventDefault()
         const newItem = {
-            id: uuidv4(),
             name: e.target.addItem.value,
             listId: props.listId, 
             completed: false
         }
 
-        //add api call to post new item
-
-        setItemState([...itemState, newItem])
-
+        fetch(`${config.API_ENDPOINT}/item`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newItem)
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(newItem => {
+            setItemState([...itemState, newItem])
+        })
         e.target.addItem.value = ''
     }
 

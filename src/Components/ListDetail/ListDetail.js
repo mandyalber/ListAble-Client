@@ -9,7 +9,7 @@ export default function ListDetail({ match }) {
 
     const { listState, itemState } = React.useContext(ListContext)
 
-    const list = listState.filter(list => list.id === match.params.listId).pop() || { id: null }
+    const list = listState.filter(list => list.id === parseInt(match.params.listId)).pop() || { id: null }
 
     const items = itemState.length ? itemState.filter(item => item.listId === list.id)
         .map(item =>

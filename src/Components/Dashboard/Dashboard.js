@@ -6,7 +6,7 @@ import ListContext from '../ListContext'
 import './Dashboard.css'
 import CategoryNav from '../CategoryNav/CategoryNav'
 import CreateCategory from '../CategoryNav/CreateCategory'
-import ListDisplay from './ListDisplay'
+import ListLink from './ListLink'
 
 export default function Dashboard({ match }) {
 
@@ -19,7 +19,7 @@ export default function Dashboard({ match }) {
         listState.filter(list => list.categoryId === parseInt(match.params.categoryId))
 
     const lists = categoryLists.length ? categoryLists.map(list =>
-        <li key={list.id}><ListDisplay id={list.id} name={list.name}/></li>)
+        <li key={list.id}><ListLink id={list.id} name={list.name}/></li>)
         : `No ${selectedCategory.name} Lists yet, create a new list below`
 
     return (

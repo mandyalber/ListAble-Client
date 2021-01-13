@@ -4,7 +4,7 @@ import ListContext from '../ListContext'
 import './Dashboard.css'
 
 
-export default function ListDisplay(props) {
+export default function ListLink(props) {
 
     const { listState, setListState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)

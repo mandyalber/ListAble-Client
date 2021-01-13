@@ -1,22 +1,34 @@
 import React from 'react'
 import ListContext from '../ListContext'
 import './CategoryNav.css'
-import { v4 as uuidv4 } from 'uuid';
+import config from '../../config'
+import { useHistory } from 'react-router-dom'
 
 export default function CreateCategory(props) {
     const { categoryState, setCategoryState } = React.useContext(ListContext)
+    let history = useHistory()
 
     const handleSubmitClick = (e) => {
         e.preventDefault()
         const newCategory = {
-            id: uuidv4(),
             name: e.target.catname.value
         }
 
-        //add api call to post new category
-
-        setCategoryState([...categoryState, newCategory])
-
+        fetch(`${config.API_ENDPOINT}/category`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newCategory)
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(newCategory => {
+            setCategoryState([...categoryState, newCategory])
+            history.push(`/category/${newCategory.id}`)
+        })
         e.target.catname.value = ''
     }
 
@@ -28,6 +40,4 @@ export default function CreateCategory(props) {
             </fieldset>
         </form>
     )
-
-
 }

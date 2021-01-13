@@ -37,7 +37,7 @@ function App() {
         setItemState(items)
       })
       .catch(error => console.log(error))
-  })
+  }, [])
 
   const contextValue = {
     categoryState,
