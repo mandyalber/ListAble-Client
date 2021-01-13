@@ -13,10 +13,10 @@ export default function Dashboard({ match }) {
     const { listState, categoryState } = React.useContext(ListContext)
 
     const selectedCategory = categoryState.filter(cat =>
-        cat.id === match.params.categoryId).pop() || { id: null }
+        cat.id === parseInt(match.params.categoryId)).pop() || { id: null }
 
     const categoryLists = !match.params.categoryId ? listState :
-        listState.filter(list => list.categoryId === match.params.categoryId)
+        listState.filter(list => list.categoryId === parseInt(match.params.categoryId))
 
     const lists = categoryLists.length ? categoryLists.map(list =>
         <li key={list.id}><ListDisplay id={list.id} name={list.name}/></li>)
