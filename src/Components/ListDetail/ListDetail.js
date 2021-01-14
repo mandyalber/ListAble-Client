@@ -14,7 +14,7 @@ export default function ListDetail({ match }) {
     const items = itemState.length ? itemState.filter(item => item.listId === list.id)
         .map(item =>
             <li key={item.id}>
-                <Item id={item.id} name={item.name} completed={item.completed} />
+                <Item {...item} />
             </li>) : ''
 
     if (list.id) {

@@ -38,6 +38,8 @@ export default function CreateList(props) {
             setListState([...listState, newList])
             history.push(`/list/${newList.id}`)
         })
+        .catch(error => console.log(error))
+        
         e.target.listname.value = ''
     }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import ListContext from '../ListContext'
+import config from '../../config'
 import './CategoryNav.css'
 
 export default function Category(props) {
@@ -8,10 +9,21 @@ export default function Category(props) {
     const { categoryState, setCategoryState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
     const [category, setCategory] = useState(props.name)
+    let history = useHistory
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
-        setCategoryState(categoryState.filter(category => category.id !== e.target.value))
+
+        const categoryId = e.target.value
+        fetch(`${config.API_ENDPOINT}/category/${categoryId}`, {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json' }
+        })
+            .then(() => {
+                setCategoryState(categoryState.filter(category => category.id !== categoryId))
+                history.push(`/dashboard`)
+            })
+            .catch(error => console.log(error))        
     }
 
     const handleEdit = () => {
@@ -23,14 +35,32 @@ export default function Category(props) {
     }
 
     const handleEditSubmit = (id) => {
-        const newCats = categoryState.map(cat => {
-            if (cat.id === id) {
-                cat.name = category
-            }
-            return cat
+
+        const updatedCat = {
+            name: category,
+        }
+        fetch(`${config.API_ENDPOINT}/category/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updatedCat)
         })
-        setCategoryState(newCats)
-        handleEdit()
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.status)
+                }
+                return res.json()
+            })
+            .then(updatedCat => {
+                const newCats = categoryState.map(cat => {
+                    if (cat.id === id) {
+                        cat.name = updatedCat.name
+                    }
+                    return cat
+                })
+                setCategoryState(newCats)
+                handleEdit()
+            })
+            .catch(error => console.log(error))
     }
 
     return (

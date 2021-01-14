@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ListContext from '../ListContext'
+import config from '../../config'
 import './Dashboard.css'
 
 
@@ -12,7 +13,15 @@ export default function ListLink(props) {
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
-        setListState(listState.filter(list => list.id !== e.target.value))
+        const listId = e.target.value
+        fetch(`${config.API_ENDPOINT}/list/${listId}`, {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json' }
+        })
+            .then(() => {
+                setListState(listState.filter(list => list.id !== listId))
+            })
+            .catch(error => console.log(error))
     }
 
     const handleEdit = () => {
@@ -24,14 +33,31 @@ export default function ListLink(props) {
     }
 
     const handleEditSubmit = (id) => {
-        const newLists = listState.map(lst => {
-            if (lst.id === id) {
-                lst.name = list
-            }
-            return lst
+        const updatedList = {
+            name: list,
+        }
+        fetch(`${config.API_ENDPOINT}/list/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updatedList)
         })
-        setListState(newLists)
-        handleEdit()
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.status)
+                }
+                return res.json()
+            })
+            .then(updatedList => {
+                const newLists = listState.map(lst => {
+                    if (lst.id === id) {
+                        lst.name = updatedList.name
+                    }
+                    return lst
+                })
+                setListState(newLists)
+                handleEdit()
+            })
+            .catch(error => console.log(error))
     }
 
     return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ListContext from '../ListContext'
+import config from '../../config'
 import './Item.css'
 
 export default function Item(props) {
@@ -10,7 +11,18 @@ export default function Item(props) {
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
-        setItemState(itemState.filter(item => item.id !== e.target.value))
+        const itemId = e.target.value
+
+        fetch(`${config.API_ENDPOINT}/item/${itemId}`, {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json' }
+        })
+            .then(() => {
+                console.log(itemId)
+                setItemState(itemState.filter(item => item.id !== itemId))
+                //state is not refreshing, should i trigger a refresh of useEffect?
+            })
+            .catch(error => console.log(error))
     }
 
     const handleEdit = () => {
@@ -22,25 +34,62 @@ export default function Item(props) {
     }
 
     const handleEditSubmit = (id) => {
-        const newItems = itemState.map(itm => {
-            if (itm.id === id) {
-                itm.name = item
-            }
-            return itm
+        const updatedItem = {
+            name: item,
+        }
+
+        fetch(`${config.API_ENDPOINT}/item/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updatedItem)
         })
-        setItemState(newItems)
-        handleEdit()
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.status)
+                }
+                return res.json()
+            })
+            .then(updatedItem => {
+                const newItems = itemState.map(itm => {
+                    if (itm.id === updatedItem.id) {
+                        itm.name = updatedItem.name
+                    }
+                    return itm
+                })
+                setItemState(newItems)
+                handleEdit()
+            })
+            .catch(error => console.log(error))
     }
 
     const handleCheckClick = (id) => {
-        const newItems = itemState.map(item => {
-            if (item.id === id) {
-                item.complete = !item.complete
-            }
-            return item
-        })
-        setItemState(newItems)
         setComplete(!complete)
+        
+        const updatedItem = {
+            complete: complete
+        }
+
+        fetch(`${config.API_ENDPOINT}/item/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(updatedItem)
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(updatedItem => {
+            const newItems = itemState.map(itm => {
+                if (itm.id === updatedItem.id) {
+                    itm.complete = updatedItem.complete
+                }
+                return itm
+            })
+            setItemState(newItems)            
+        })
+        .catch(error => console.log(error))
     }
 
     return (
@@ -50,7 +99,7 @@ export default function Item(props) {
                     <input type="checkbox"
                         checked={props.complete}
                         onChange={() => handleCheckClick(props.id)}
-                        disabled={props.complete ? true : false}
+                        //disabled={complete ? true : false}
                     />
                     <span className={complete ? "complete" : null}>{props.name}</span>
                     <button

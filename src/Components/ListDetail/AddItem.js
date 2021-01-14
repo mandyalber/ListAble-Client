@@ -27,6 +27,8 @@ export default function CreateList(props) {
         .then(newItem => {
             setItemState([...itemState, newItem])
         })
+        .catch(error => console.log(error))
+        
         e.target.addItem.value = ''
     }
 

@@ -29,6 +29,8 @@ export default function CreateCategory(props) {
             setCategoryState([...categoryState, newCategory])
             history.push(`/category/${newCategory.id}`)
         })
+        .catch(error => console.log(error))
+        
         e.target.catname.value = ''
     }
 
