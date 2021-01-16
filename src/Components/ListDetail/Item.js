@@ -4,22 +4,24 @@ import config from '../../config'
 import './Item.css'
 
 export default function Item(props) {
-    const { itemState, setItemState, onDelete } = React.useContext(ListContext)
+    const { itemState, setItemState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
     const [item, setItem] = useState(props.name)
-    const [complete, setComplete] = useState(false)
+    const [complete, setComplete] = useState(props.complete)
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
 
         const itemId = e.target.value
- 
+
         fetch(`${config.API_ENDPOINT}/item/${itemId}`, {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' }
         })
             .then(() => {
-                onDelete(itemId)
+                setItemState(itemState.filter(item => 
+                    parseInt(item.id) !== parseInt(itemId))
+                )
             })
             .catch(error => console.log(error))
     }
@@ -62,33 +64,37 @@ export default function Item(props) {
     }
 
     const handleCheckClick = (id) => {
-        setComplete(!complete)
-        
+        //setComplete(!complete)
+        console.log(complete)
+
         const updatedItem = {
-            complete: complete
+            complete: !complete
         }
+        console.log(complete)
 
         fetch(`${config.API_ENDPOINT}/item/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updatedItem)
+                || console.log(updatedItem)
         })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
-            return res.json()
-        })
-        .then(updatedItem => {
-            const newItems = itemState.map(itm => {
-                if (itm.id === updatedItem.id) {
-                    itm.complete = updatedItem.complete
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.status)
                 }
-                return itm
+                return res.json()
             })
-            setItemState(newItems)            
-        })
-        .catch(error => console.log(error))
+            .then(updatedItem => {
+                const newItems = itemState.map(itm => {
+                    if (itm.id === updatedItem.id) {
+                        itm.complete = updatedItem.complete
+                    }
+                    return itm
+                })
+                setItemState(newItems)
+                setComplete(updatedItem.complete)
+            })
+            .catch(error => console.log(error))
     }
 
     return (
@@ -96,9 +102,8 @@ export default function Item(props) {
             {!edit ? (
                 <>
                     <input type="checkbox"
-                        checked={props.complete}
+                        checked={complete}
                         onChange={() => handleCheckClick(props.id)}
-                        //disabled={complete ? true : false}
                     />
                     <span className={complete ? "complete" : null}>{props.name}</span>
                     <button

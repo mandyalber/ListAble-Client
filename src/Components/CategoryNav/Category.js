@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router'
 import { NavLink, useHistory } from 'react-router-dom'
 import ListContext from '../ListContext'
 import config from '../../config'
 import './CategoryNav.css'
 
-export default function Category(props) {
+function Category(props) {
 
     const { categoryState, setCategoryState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
@@ -20,8 +21,10 @@ export default function Category(props) {
             headers: { 'content-type': 'application/json' }
         })
             .then(() => {
-                setCategoryState(categoryState.filter(category => category.id !== categoryId))
-                history.push(`/dashboard`)
+                setCategoryState(categoryState.filter(category => 
+                    parseInt(category.id) !== parseInt(categoryId))
+                )
+                props.history.push(`/dashboard`)
             })
             .catch(error => console.log(error))        
     }
@@ -89,3 +92,4 @@ export default function Category(props) {
 }
 
 
+export default withRouter(Category);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom'
 import LandingPage from './Components/LandingPage/LandingPage'
 import Dashboard from './Components/Dashboard/Dashboard'
@@ -46,12 +46,22 @@ function App() {
       })
       .catch(error => console.log(error))
   }, [])
-
+/*
   const onDelete=(id)=>{
     console.log('ondelete ran')
-    setItemState(itemState.filter(item => console.log(item.id, id)   ||item.id !== id))              
-       
-  }
+    //setItemState(itemState.filter(item => console.log(item.id, id)   ||item.id !== id))              
+      console.log(id)
+      const newItems = []
+      itemState.forEach(item => {
+        console.log(item.id,id) 
+        if(parseInt(item.id) !== parseInt(id)){
+          newItems.push(item)
+        }
+        return newItems
+      })
+      setItemState(newItems)
+     console.log(newItems, itemState)
+  }*/
 
   const contextValue = {
     categoryState,
@@ -60,7 +70,6 @@ function App() {
     setCategoryState,
     setListState,
     setItemState, 
-    onDelete
   }
 
   return (

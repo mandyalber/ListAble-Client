@@ -7,8 +7,6 @@ import React from 'react'
     setCategoryState: ()=> {},
     setListState: ()=> {},
     setItemState: ()=> {},
-    onDelete: ()=>{}
-
 })
 
 export default ListContext

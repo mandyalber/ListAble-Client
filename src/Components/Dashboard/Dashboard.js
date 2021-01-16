@@ -20,7 +20,7 @@ export default function Dashboard({ match }) {
 
     const lists = categoryLists.length ? categoryLists.map(list =>
         <li key={list.id}><ListLink id={list.id} name={list.name}/></li>)
-        : `No ${selectedCategory.name} Lists yet, create a new list below`
+        : `No ${selectedCategory.name||''} Lists yet, create a new list below`
 
     return (
         <main>

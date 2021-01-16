@@ -19,7 +19,9 @@ export default function ListLink(props) {
             headers: { 'content-type': 'application/json' }
         })
             .then(() => {
-                setListState(listState.filter(list => list.id !== listId))
+                setListState(listState.filter(list =>
+                    parseInt(list.id) !== parseInt(listId))
+                )
             })
             .catch(error => console.log(error))
     }
