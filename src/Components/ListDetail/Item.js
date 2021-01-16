@@ -4,23 +4,22 @@ import config from '../../config'
 import './Item.css'
 
 export default function Item(props) {
-    const { itemState, setItemState } = React.useContext(ListContext)
+    const { itemState, setItemState, onDelete } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
     const [item, setItem] = useState(props.name)
     const [complete, setComplete] = useState(false)
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
-        const itemId = e.target.value
 
+        const itemId = e.target.value
+ 
         fetch(`${config.API_ENDPOINT}/item/${itemId}`, {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' }
         })
             .then(() => {
-                console.log(itemId)
-                setItemState(itemState.filter(item => item.id !== itemId))
-                //state is not refreshing, should i trigger a refresh of useEffect?
+                onDelete(itemId)
             })
             .catch(error => console.log(error))
     }

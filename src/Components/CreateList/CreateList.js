@@ -5,7 +5,7 @@ import './CreateList.css'
 import { useHistory } from 'react-router-dom'
 
 function getHTMLOptions(array) {
-    return (array.map((item, idx) => 
+    return (array.sort().map((item, idx) => 
         <option key={idx + 1} value={item.id} name={item.id}>{item.name}</option>)
         )
 }

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import LandingPage from './Components/LandingPage/LandingPage'
 import Dashboard from './Components/Dashboard/Dashboard'
 import ListDetail from './Components/ListDetail/ListDetail'
 import ListContext from './Components/ListContext'
-import store from './dummy-store'
 import config from './config'
 import './App.css'
 
@@ -12,6 +11,15 @@ function App() {
   const [categoryState, setCategoryState] = useState([])
   const [listState, setListState] = useState([])
   const [itemState, setItemState] = useState([])
+
+  /*const [context, setContext] = useState(useContext(ListContext))
+  setContext({
+    itemState,
+    listState,
+    categoryState
+  })*/
+  //...c,catState,listState,itemState
+
 
   useEffect(() => {
     Promise.all([
@@ -39,13 +47,20 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
+  const onDelete=(id)=>{
+    console.log('ondelete ran')
+    setItemState(itemState.filter(item => console.log(item.id, id)   ||item.id !== id))              
+       
+  }
+
   const contextValue = {
     categoryState,
     listState,
     itemState,
     setCategoryState,
     setListState,
-    setItemState
+    setItemState, 
+    onDelete
   }
 
   return (
@@ -65,3 +80,7 @@ function App() {
 }
 
 export default App;
+
+
+//better to update state in app or child components?
+//ability to preselect category based on path?

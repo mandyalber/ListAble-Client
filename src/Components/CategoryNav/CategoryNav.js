@@ -7,7 +7,7 @@ import './CategoryNav.css'
 export default function CategoryNav(props) {
 
     const { categoryState} = React.useContext(ListContext)
-    const categories = categoryState.map(cat =>
+    const categories = categoryState.sort().map(cat =>
         <li key={cat.id}><Category id={cat.id} name={cat.name}/></li>)
 
     if (categories.length) {

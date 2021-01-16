@@ -15,7 +15,7 @@ export default function SearchBox(props) {
         let found
 
         for (let i = 0; i < listState.length; i++) {
-            if (listState[i].name.toLowerCase() === word) {
+            if (listState[i].name.toLowerCase().includes(word)) {
                 console.log(listState[i].name, word)
                 found = listState[i].id
                 console.log(found)
@@ -23,7 +23,7 @@ export default function SearchBox(props) {
             }
             else {
                 for (let i = 0; i < itemState.length; i++) {
-                    if (itemState[i].name.toLowerCase() === word) {
+                    if (itemState[i].name.toLowerCase().includes(word)) {
                         found = itemState[i].listId
                         console.log(found)
                     }
