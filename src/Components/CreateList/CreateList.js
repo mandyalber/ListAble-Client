@@ -46,9 +46,8 @@ export default function CreateList(props) {
     return (
         <form className="create-list" onSubmit={handleSubmitClick}>
             <fieldset>
-                <legend>Create a new List:</legend>
-                <label htmlFor="name">List Title: </label>
-                <input id="listname" name="list-name" type="text" required/>
+                <label htmlFor="name">Add List: </label>
+                <input id="listname" placeholder="List title" type="text" required/>
                 <label htmlFor="category">Category: </label>
                 <select id="category">
                     {options}

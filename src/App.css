@@ -2,21 +2,40 @@
     font-family: Garamond;
     min-height: 600px;
 }
+html, body{    
+    height: 100%;
+}
+
+body{
+    background-color:  rgb(219, 229, 233);
+    display: flex;
+    flex-direction: column;
+}
 
 header{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size:20px;
     text-align: center;
-    padding: 20px;
+    padding: 1px;
     background-color: dimgray;
+
 }
 
 main {
     max-width: 600px;
-    margin: 0 auto;
     min-height: 600px;
+    margin: 0 auto;
+    flex: 1 0 auto;
 }
 
-footer {
+.footer {    
+    flex-shrink: 0;
+    margin-top: auto;
+    font-family: 'Gloria Hallelujah', cursive;;
     text-align: center;
     padding: 20px;
     background-color: dimgray;
+}
+.footer p{
+    flex: 1;
 }

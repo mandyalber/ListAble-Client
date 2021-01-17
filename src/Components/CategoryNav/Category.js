@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import ListContext from '../ListContext'
 import config from '../../config'
 import './CategoryNav.css'
 
 function Category(props) {
 
-    const { categoryState, setCategoryState } = React.useContext(ListContext)
+    const { categoryState, setCategoryState, listState, setListState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)
     const [category, setCategory] = useState(props.name)
-    let history = useHistory
 
     const handleDeleteClick = (e) => {
         e.preventDefault()
@@ -23,6 +22,9 @@ function Category(props) {
             .then(() => {
                 setCategoryState(categoryState.filter(category => 
                     parseInt(category.id) !== parseInt(categoryId))
+                )
+                setListState(listState.filter(list => 
+                    parseInt(list.categoryId) !== parseInt(categoryId))
                 )
                 props.history.push(`/dashboard`)
             })

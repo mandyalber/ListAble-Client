@@ -16,5 +16,5 @@ export default function CategoryNav(props) {
             {categories}
         </ul>
     }
-    return <ul className="category">Add Some New Categories</ul>
+    return <ul className="category">No Categories yet, add a new one above</ul>
 }

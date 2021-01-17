@@ -12,15 +12,6 @@ function App() {
   const [listState, setListState] = useState([])
   const [itemState, setItemState] = useState([])
 
-  /*const [context, setContext] = useState(useContext(ListContext))
-  setContext({
-    itemState,
-    listState,
-    categoryState
-  })*/
-  //...c,catState,listState,itemState
-
-
   useEffect(() => {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/category`),
@@ -46,22 +37,6 @@ function App() {
       })
       .catch(error => console.log(error))
   }, [])
-/*
-  const onDelete=(id)=>{
-    console.log('ondelete ran')
-    //setItemState(itemState.filter(item => console.log(item.id, id)   ||item.id !== id))              
-      console.log(id)
-      const newItems = []
-      itemState.forEach(item => {
-        console.log(item.id,id) 
-        if(parseInt(item.id) !== parseInt(id)){
-          newItems.push(item)
-        }
-        return newItems
-      })
-      setItemState(newItems)
-     console.log(newItems, itemState)
-  }*/
 
   const contextValue = {
     categoryState,
@@ -82,14 +57,10 @@ function App() {
           <Route path="/list/:listId" component={ListDetail} />
           <Route path="/" component={LandingPage} />
         </Switch>
-        <footer>Created by Amanda Alber 2020</footer>
+        <footer className="footer"><p>Created by Amanda Alber 2020</p></footer>
       </div>
     </ListContext.Provider>
   );
 }
 
 export default App;
-
-
-//better to update state in app or child components?
-//ability to preselect category based on path?

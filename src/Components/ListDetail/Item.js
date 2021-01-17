@@ -64,19 +64,15 @@ export default function Item(props) {
     }
 
     const handleCheckClick = (id) => {
-        //setComplete(!complete)
-        console.log(complete)
 
         const updatedItem = {
             complete: !complete
         }
-        console.log(complete)
 
         fetch(`${config.API_ENDPOINT}/item/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updatedItem)
-                || console.log(updatedItem)
         })
             .then(res => {
                 if (!res.ok) {

@@ -19,11 +19,13 @@ export default function ListDetail({ match }) {
 
     if (list.id) {
         return (
-            <main>
-                <Link to="/dashboard">Back to Dashboard</Link>
-                <h2>{list.name}</h2>
-                <ul className="todo">{items}</ul>
-                <AddItem listId={list.id} />
+            <main className="list-detail">
+                <Link to="/dashboard"> Back to Dashboard</Link>
+                <div className="list">
+                    <h2>{list.name}</h2>
+                    <ul className="todo">{items}</ul>
+                    <AddItem listId={list.id} />
+                </div>
             </main>
         )
     }

@@ -1,3 +1,18 @@
 .complete {
     text-decoration:line-through;
+    color: dimgray;
 }
+
+
+.todo li {
+    padding:  1.5px;
+}
+
+.todo button {
+
+    padding: 3px;
+    margin: 3px;
+    font-size: 10px;
+    border-radius: 50%;
+}
+

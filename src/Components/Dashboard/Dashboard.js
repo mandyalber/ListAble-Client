@@ -28,7 +28,7 @@ export default function Dashboard({ match }) {
             <h2>List Dashboard</h2>
             <SearchBox /><CreateCategory />
             <CategoryNav />
-            <ul className="list">{lists}</ul>
+            <ul className="lists">{lists}</ul>
             <CreateList />
         </main>
     )

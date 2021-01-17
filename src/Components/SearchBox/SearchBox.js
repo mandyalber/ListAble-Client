@@ -16,16 +16,13 @@ export default function SearchBox(props) {
 
         for (let i = 0; i < listState.length; i++) {
             if (listState[i].name.toLowerCase().includes(word)) {
-                console.log(listState[i].name, word)
                 found = listState[i].id
-                console.log(found)
                 continue
             }
             else {
                 for (let i = 0; i < itemState.length; i++) {
                     if (itemState[i].name.toLowerCase().includes(word)) {
                         found = itemState[i].listId
-                        console.log(found)
                     }
                 }
             }

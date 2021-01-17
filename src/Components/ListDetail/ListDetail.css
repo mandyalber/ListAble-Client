@@ -1,13 +1,47 @@
-.todo {
-    list-style: none;
+.list-detail {
+    font-family: 'Architects Daughter', cursive;
 }
-.todo li {
-    padding: 5px;  
+.list-detail a {
+    text-decoration: none;
+    margin-left: 50px;
+}
+.list {
+    flex: 1 0 auto;
+    min-height: 600px;
+    max-width: 500px;
+    margin: 50px auto ;
+    padding: 33px 0 0 20px;
+    background-image: url('/src/images/list-paper.jpg');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 5px 5px rgb(237, 243, 237), 10px 10px rgb(243, 247, 245), 15px 15px rgb(234, 240, 234);
 }
 
-.todo button {
-    padding: 5px;
-    margin: 3px;
-    font-size: 10px;
-    border-radius: 50%;
+.list h2{
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    text-decoration: underline;
+}
+
+
+
+ul.todo {
+    list-style: none;
+    margin: auto;
+    max-width: 350px;
+}
+
+#addItem::placeholder{
+    font-style: italic;
+}
+
+.create-item{
+    margin-top: 25px;
+    margin-left: 100px;
+}
+.create-item input{
+    border-radius: 5px;
+
 }
