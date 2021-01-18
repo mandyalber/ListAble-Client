@@ -1,3 +1,11 @@
 .create-list {
     width: 100%;
 }
+
+.create-list input[type=text]::placeholder {
+    font-style: italic;
+}
+
+select {
+    font-style: italic;
+}

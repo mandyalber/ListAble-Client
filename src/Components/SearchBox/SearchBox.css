@@ -15,3 +15,7 @@
 .searchbox p {
     color: red;
 }
+
+.search{
+    background: url("../../images/search.svg") no-repeat top left;
+}

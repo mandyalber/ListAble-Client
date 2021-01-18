@@ -16,7 +16,17 @@
     background-repeat: no-repeat; 
     background-size: cover;
     border-radius: 3px;
-    box-shadow: 5px 5px rgb(237, 243, 237), 10px 10px rgb(243, 247, 245), 15px 15px rgb(234, 240, 234);
+    border: .5px solid #d2eef6;
+    box-shadow: 5px 5px rgb(237, 243, 237), 
+    5.5px 5.5px #d2eef6, 
+    10px 10px rgb(243, 247, 245), 
+    10.5px 10.5px #d2eef6, 
+    15px 15px rgb(234, 240, 234),
+    15.5px 15.5px #d2eef6, 
+    20px 20px 8px rgb(97, 95, 95);
+}
+.list li {
+    padding: 5px;  
 }
 
 .list h2{
@@ -24,8 +34,6 @@
     font-family: 'Indie Flower', cursive;
     text-decoration: underline;
 }
-
-
 
 ul.todo {
     list-style: none;
@@ -44,4 +52,14 @@ ul.todo {
 .create-item input{
     border-radius: 5px;
 
+}
+.list button {
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    width: 17px;
+    border: none;
+    vertical-align: text-top;
+    margin-left: 5px;
 }

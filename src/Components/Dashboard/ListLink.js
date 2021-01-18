@@ -67,8 +67,13 @@ export default function ListLink(props) {
             {!edit ? (
                 <>
                     <NavLink to={`/list/${props.id}`}>{props.name}</NavLink>
-                    <button onClick={handleEdit}>Edit</button>
-                    <button name="delete" value={props.id} onClick={handleDeleteClick}>Delete</button>
+                    <button className="edit" onClick={handleEdit}/>
+                    <button
+                        className="delete"
+                        name="delete"
+                        value={props.id}
+                        onClick={handleDeleteClick}
+                    />
                 </>
             ) :
                 (

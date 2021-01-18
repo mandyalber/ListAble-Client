@@ -1,4 +1,12 @@
+.sample-list{
+    list-style-type:square;
+}
+
 .sample-list li {
     font-style: italic;
     padding-bottom: 2%;
+}
+
+.title{
+    font-family: 'Gloria Hallelujah', cursive;
 }

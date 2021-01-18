@@ -103,13 +103,15 @@ export default function Item(props) {
                     />
                     <span className={complete ? "complete" : null}>{props.name}</span>
                     <button
+                        className="edit"
                         onClick={handleEdit}
-                        disabled={complete}>Edit
+                        disabled={complete}>
                     </button>
-                    <button
+                    <button      
+                        className="delete"                   
                         name="delete"
                         value={props.id}
-                        onClick={handleDeleteClick}>Delete
+                        onClick={handleDeleteClick}>                       
                 </button>
                 </>
             ) :

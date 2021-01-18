@@ -35,7 +35,7 @@ export default function CreateList(props) {
     return (
         <form className="create-item" onSubmit={handleSubmitClick}>
             <input type="text" id="addItem" placeholder="Add a new item" required/>
-            <button>+</button>
+            <button className="add"/>
         </form>
     )
 }

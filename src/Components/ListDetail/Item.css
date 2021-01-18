@@ -3,16 +3,14 @@
     color: dimgray;
 }
 
-
 .todo li {
-    padding:  1.5px;
+    padding: 4.8px 2px;
 }
 
-.todo button {
-
-    padding: 3px;
-    margin: 3px;
-    font-size: 10px;
-    border-radius: 50%;
+.item input{
+    border-radius: 5px;
 }
 
+.item button {
+    margin-left: 5px;
+}

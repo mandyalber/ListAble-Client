@@ -57,7 +57,10 @@ function App() {
           <Route path="/list/:listId" component={ListDetail} />
           <Route path="/" component={LandingPage} />
         </Switch>
-        <footer className="footer"><p>Created by Amanda Alber 2020</p></footer>
+        <footer className="footer">
+          <p>Created by Amanda Alber 2020</p>
+          <div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          </footer>
       </div>
     </ListContext.Provider>
   );

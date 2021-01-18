@@ -1,15 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './LandingPage.css'
 
-export default function LandingPage (props){
+export default function LandingPage(props) {
 
     return (
         <main>
-        <h2>Welcome to ListAble!</h2>
+            <h2>Welcome to <span className="title">ListAble</span>!</h2>
             <p>Keep all your lists in one spot for easy retrieval! Create lists and categories to organize and keep track of everything you need to get done!</p>
 
-            <p>Some examples of possible list categories include:</p> 
+            <p>Some examples of possible list categories include:</p>
             <ul className="sample-list">
                 <li>Shopping lists (organize by store!)</li>
                 <li>Wish Lists</li>
@@ -20,8 +20,7 @@ export default function LandingPage (props){
                 <li>Homework/Project task lists</li>
                 <li>Goal List (don't lose sight of your short and long term goals!)</li>
                 <li>Or create a custom list category to fit your needs!</li>
-            </ul>
-
+            </ul>            
             <p><Link to="/dashboard">Get started now</Link></p>
         </main>
     )

@@ -37,8 +37,8 @@ export default function CreateCategory(props) {
     return (
         <form className="create-category" onSubmit={handleSubmitClick}>
             <fieldset>
-                <input id="catname" type="text" required />
-                <input type="submit" value="Add Category" />
+                <input id="catname" type="text" placeholder="New Category" required />
+                <button type="submit" className="add"/>
             </fieldset>
         </form>
     )

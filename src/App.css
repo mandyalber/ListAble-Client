@@ -1,13 +1,14 @@
 .app {
     font-family: Garamond;
     min-height: 600px;
+    max-width: 100vw;
 }
 html, body{    
     height: 100%;
 }
 
 body{
-    background-color:  rgb(219, 229, 233);
+    background-color:  #fdfcf5;
     display: flex;
     flex-direction: column;
 }
@@ -17,25 +18,33 @@ header{
     font-size:20px;
     text-align: center;
     padding: 1px;
-    background-color: dimgray;
-
+    background-color: #fcbf46;
+    color:#003049;
+    
 }
 
-main {
-    max-width: 600px;
+main {    
+    max-width: 100vw;
     min-height: 600px;
     margin: 0 auto;
     flex: 1 0 auto;
 }
 
 .footer {    
+    max-width: 100vw;
     flex-shrink: 0;
     margin-top: auto;
     font-family: 'Gloria Hallelujah', cursive;;
     text-align: center;
     padding: 20px;
-    background-color: dimgray;
+    background-color: #fcbf46;
+    color:#003049;
 }
 .footer p{
     flex: 1;
+}
+
+.footer div {
+    font-size: 11px;
+    text-decoration: none;
 }

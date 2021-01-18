@@ -23,7 +23,7 @@ export default function Dashboard({ match }) {
         : `No ${selectedCategory.name||''} Lists yet, create a new list below`
 
     return (
-        <main>
+        <main className="dashboard">
             <Link to="/">Back to Home</Link>
             <h2>List Dashboard</h2>
             <SearchBox /><CreateCategory />

@@ -20,15 +20,15 @@ function Category(props) {
             headers: { 'content-type': 'application/json' }
         })
             .then(() => {
-                setCategoryState(categoryState.filter(category => 
+                setCategoryState(categoryState.filter(category =>
                     parseInt(category.id) !== parseInt(categoryId))
                 )
-                setListState(listState.filter(list => 
+                setListState(listState.filter(list =>
                     parseInt(list.categoryId) !== parseInt(categoryId))
                 )
                 props.history.push(`/dashboard`)
             })
-            .catch(error => console.log(error))        
+            .catch(error => console.log(error))
     }
 
     const handleEdit = () => {
@@ -69,17 +69,22 @@ function Category(props) {
     }
 
     return (
-        <div>
+        <div className="category">
             {!edit ? (
                 <div>
-                    <NavLink to={`/category/${props.id}`}>{props.name}</NavLink>
-                    <button onClick={handleEdit}>Edit</button>
-                    <button name="delete" value={props.id} onClick={handleDeleteClick}>X</button>
+                    <NavLink to={`/category/${props.id}`}>{props.name}</NavLink><br />
+                    <button className="edit" onClick={handleEdit}/>
+                    <button
+                        className="delete"
+                        name="delete"
+                        value={props.id}
+                        onClick={handleDeleteClick}>
+                    </button>
                 </div>
             )
                 : (
                     <>{" "}
-                        <input type="text" value={category} onChange={handleEditChange} />
+                        <input type="text" value={category} onChange={handleEditChange} /><br />
                         <button onClick={handleEdit}>Cancel</button>
                         <button
                             type="submit"
