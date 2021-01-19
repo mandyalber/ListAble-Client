@@ -14,16 +14,19 @@ export default function ListLink(props) {
     const handleDeleteClick = (e) => {
         e.preventDefault()
         const listId = e.target.value
-        fetch(`${config.API_ENDPOINT}/list/${listId}`, {
-            method: 'DELETE',
-            headers: { 'content-type': 'application/json' }
-        })
-            .then(() => {
-                setListState(listState.filter(list =>
-                    parseInt(list.id) !== parseInt(listId))
-                )
+
+        if (window.confirm(`Are you sure you want to delete "${list}"? This will also delete any items inclued on "${list}".`)) {
+            fetch(`${config.API_ENDPOINT}/list/${listId}`, {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' }
             })
-            .catch(error => console.log(error))
+                .then(() => {
+                    setListState(listState.filter(list =>
+                        parseInt(list.id) !== parseInt(listId))
+                    )
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     const handleEdit = () => {
@@ -67,9 +70,9 @@ export default function ListLink(props) {
             {!edit ? (
                 <>
                     <NavLink to={`/list/${props.id}`}>{props.name}</NavLink>
-                    <button className="edit" onClick={handleEdit}/>
+                    <button className="edit-white" onClick={handleEdit} />
                     <button
-                        className="delete"
+                        className="delete-white"
                         name="delete"
                         value={props.id}
                         onClick={handleDeleteClick}
@@ -79,12 +82,12 @@ export default function ListLink(props) {
                 (
                     <>{" "}
                         <input type="text" value={list} onChange={handleEditChange} />
-                        <button onClick={handleEdit}>Cancel</button>
+                        <button className="cancel-white" onClick={handleEdit}/>
                         <button
+                            className="save-white"
                             type="submit"
-                            onClick={() => handleEditSubmit(props.id)}>
-                            Save
-                    </button>
+                            onClick={() => handleEditSubmit(props.id)}
+                        />
                     </>
                 )
             }

@@ -29,7 +29,7 @@ export default function Dashboard({ match }) {
             <SearchBox /><CreateCategory />
             <CategoryNav />
             <ul className="lists">{lists}</ul>
-            <CreateList />
+            <CreateList category={selectedCategory}/>
         </main>
     )
 }

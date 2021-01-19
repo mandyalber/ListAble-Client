@@ -14,16 +14,18 @@ export default function Item(props) {
 
         const itemId = e.target.value
 
-        fetch(`${config.API_ENDPOINT}/item/${itemId}`, {
-            method: 'DELETE',
-            headers: { 'content-type': 'application/json' }
-        })
-            .then(() => {
-                setItemState(itemState.filter(item => 
-                    parseInt(item.id) !== parseInt(itemId))
-                )
+        if (window.confirm(`Are you sure you want to delete "${item}"?`)) {
+            fetch(`${config.API_ENDPOINT}/item/${itemId}`, {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' }
             })
-            .catch(error => console.log(error))
+                .then(() => {
+                    setItemState(itemState.filter(item =>
+                        parseInt(item.id) !== parseInt(itemId))
+                    )
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     const handleEdit = () => {
@@ -107,23 +109,23 @@ export default function Item(props) {
                         onClick={handleEdit}
                         disabled={complete}>
                     </button>
-                    <button      
-                        className="delete"                   
+                    <button
+                        className="delete"
                         name="delete"
                         value={props.id}
-                        onClick={handleDeleteClick}>                       
-                </button>
+                        onClick={handleDeleteClick}>
+                    </button>
                 </>
             ) :
                 (
                     <>{" "}
                         <input type="text" value={item} onChange={handleEditChange} />
-                        <button onClick={handleEdit}>Cancel</button>
+                        <button className="cancel" onClick={handleEdit}/>
                         <button
+                            className="save"
                             type="submit"
-                            onClick={() => handleEditSubmit(props.id)}>
-                            Save
-                        </button>
+                            onClick={() => handleEditSubmit(props.id)}
+                        />
                     </>
                 )
             }

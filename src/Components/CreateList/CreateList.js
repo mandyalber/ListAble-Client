@@ -4,22 +4,31 @@ import config from '../../config'
 import './CreateList.css'
 import { useHistory } from 'react-router-dom'
 
-function getHTMLOptions(array) {
-    return (array.sort().map((item, idx) => 
-        <option key={idx + 1} value={item.id} name={item.id}>{item.name}</option>)
-        )
-}
 
 export default function CreateList(props) {
+
+    function getHTMLOptions(array) {
+        return (array.map((item, idx) => {
+            if (props.category.id === item.id) {
+                return (
+                    <option
+                        key={idx + 1} value={item.id} name={item.id} selected="selected">
+                        {item.name}
+                    </option>
+                )
+            }
+            return <option key={idx + 1} value={item.id} name={item.id}>{item.name}</option>
+        }))
+    }
 
     const { categoryState, listState, setListState } = React.useContext(ListContext)
     const options = getHTMLOptions(categoryState)
     let history = useHistory()
-    
+
     const handleSubmitClick = (e) => {
         e.preventDefault()
         const newList = {
-            name:  e.target.listname.value, 
+            name: e.target.listname.value,
             categoryId: e.target.category.value
         }
 
@@ -28,18 +37,18 @@ export default function CreateList(props) {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newList)
         })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
-            return res.json()
-        })
-        .then(newList => {
-            setListState([...listState, newList])
-            history.push(`/list/${newList.id}`)
-        })
-        .catch(error => console.log(error))
-        
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.status)
+                }
+                return res.json()
+            })
+            .then(newList => {
+                setListState([...listState, newList])
+                history.push(`/list/${newList.id}`)
+            })
+            .catch(error => console.log(error))
+
         e.target.listname.value = ''
     }
 
@@ -47,12 +56,12 @@ export default function CreateList(props) {
         <form className="create-list" onSubmit={handleSubmitClick}>
             <fieldset>
                 <label htmlFor="name">Add List: </label>
-                <input id="listname" placeholder="List title" type="text" required/>
+                <input id="listname" placeholder="List title" type="text" required />
                 <label htmlFor="category">Category: </label>
                 <select id="category">
                     {options}
                 </select>
-                <input type="submit" value="Submit" />
+                <button type="submit" className="add" />
             </fieldset>
         </form>
     )

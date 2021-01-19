@@ -1,15 +1,24 @@
-.searchbox{
+.searchbox {
     display: inline;
     float: left;
 }
 
+.searchbox fieldset {
+    border-radius: 5px;
+    border:1px solid #006DF0;
+}
+
 .searchbox input[type=text]{
-    width: 200px;
+    margin-top: 5px;
+    width: 100px;
     margin-right: 5px;
+    border-radius: 5px;
+    border:1px solid #006DF0;
 }
 
 .searchbox input[type=text]::placeholder {
     font-style: italic;
+    font-size: 8px;
 }
 
 .searchbox p {
@@ -18,4 +27,14 @@
 
 .search{
     background: url("../../images/search.svg") no-repeat top left;
+}
+
+@media only screen and (min-width: 800px){
+
+    .searchbox input[type=text]{
+        width: 200px;      
+    }
+    .searchbox input[type=text]::placeholder {
+        font-size: 14px;
+    }
 }

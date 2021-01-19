@@ -11,7 +11,7 @@ export default function ListDetail({ match }) {
 
     const list = listState.filter(list => list.id === parseInt(match.params.listId)).pop() || { id: null }
 
-    const items = itemState.length ? itemState.filter(item => item.listId === list.id)
+    const items = itemState.length ? itemState.reverse().filter(item => item.listId === list.id)
         .map(item =>
             <li key={item.id}>
                 <Item {...item} />
@@ -23,8 +23,8 @@ export default function ListDetail({ match }) {
                 <Link to="/dashboard"> Back to Dashboard</Link>
                 <div className="list">
                     <h2>{list.name}</h2>
-                    <ul className="todo">{items}</ul>
                     <AddItem listId={list.id} />
+                    <ul className="todo">{items}</ul>                    
                 </div>
             </main>
         )

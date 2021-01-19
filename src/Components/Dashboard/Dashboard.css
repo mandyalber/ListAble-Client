@@ -1,15 +1,18 @@
 .dashboard{
+    padding: 2%;
     max-width: 600px;
     margin:auto;
     font-family: 'Indie Flower', cursive;
 }
 
-.lists {
+ul.lists {
+    padding: 0;
     margin: 0;
     list-style: none;
 }
 .lists li {
-    border: 1px solid black;
+    display: flex;
+    border: 1px solid #1f81b6;
     padding: 2% 5%;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -17,12 +20,20 @@
    
 }
 .lists li:nth-child(even) {
+    border: 1px solid #e65d5d;
     background-color: #e65d5d;
 }
 
 .lists li a {
+    display:inline-block;
+    justify-content: space-between;
+    flex-direction:row;
     text-decoration: none; 
     color:#fdfcf5;
+}
+.lists li button {
+    justify-content: space-between;
+    flex: row;
 }
 
 .dashboard button {
@@ -38,13 +49,36 @@
 }
 
 .edit {
-    background: url("../../images//pencil.svg") no-repeat top left;
+    background: url("../../images/pencil.svg") no-repeat top left;
 }
 .add {
-    background: url("../../images/add-file.svg") no-repeat top left;
+    background: url("../../images/add.svg") no-repeat top left;
    
 }
 .delete {
     background: url("../../images/delete.svg") no-repeat top left;
-  }
+}
  
+.save{
+    background: url("../../images/diskette.svg") no-repeat top left;
+}
+
+.cancel{
+    background: url("../../images/close.svg") no-repeat top left;
+}
+
+.edit-white {
+    background: url("../../images/pencil-white.svg") no-repeat top left;
+}
+
+.delete-white {
+    background: url("../../images/delete-white.svg") no-repeat top left;
+}
+ 
+.save-white{
+    background: url("../../images/diskette-white.svg") no-repeat top left;
+}
+
+.cancel-white{
+    background: url("../../images/close-white.svg") no-repeat top left;
+}

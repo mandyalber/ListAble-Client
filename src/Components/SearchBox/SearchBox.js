@@ -39,8 +39,13 @@ export default function SearchBox(props) {
     return (
         <form className="searchbox" onSubmit={handleSubmitClick}>
             <fieldset>
-                <input name="searchterm" type="text" placeholder="Search List Title or Item" />
-                <button className="search"/>
+                <input
+                    name="searchterm"
+                    type="text"
+                    placeholder="Search List Title or Item"
+                    required
+                />
+                <button className="search" />
             </fieldset>
             <p className="error">{error}</p>
         </form>

@@ -15,20 +15,23 @@ function Category(props) {
         e.preventDefault()
 
         const categoryId = e.target.value
-        fetch(`${config.API_ENDPOINT}/category/${categoryId}`, {
-            method: 'DELETE',
-            headers: { 'content-type': 'application/json' }
-        })
-            .then(() => {
-                setCategoryState(categoryState.filter(category =>
-                    parseInt(category.id) !== parseInt(categoryId))
-                )
-                setListState(listState.filter(list =>
-                    parseInt(list.categoryId) !== parseInt(categoryId))
-                )
-                props.history.push(`/dashboard`)
+
+        if (window.confirm(`Are you sure you want to delete "${category}"? This will also delete all lists in "${category}"`)) {
+            fetch(`${config.API_ENDPOINT}/category/${categoryId}`, {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' }
             })
-            .catch(error => console.log(error))
+                .then(() => {
+                    setCategoryState(categoryState.filter(category =>
+                        parseInt(category.id) !== parseInt(categoryId))
+                    )
+                    setListState(listState.filter(list =>
+                        parseInt(list.categoryId) !== parseInt(categoryId))
+                    )
+                    props.history.push(`/dashboard`)
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     const handleEdit = () => {
@@ -72,8 +75,8 @@ function Category(props) {
         <div className="category">
             {!edit ? (
                 <div>
-                    <NavLink to={`/category/${props.id}`}>{props.name}</NavLink><br />
-                    <button className="edit" onClick={handleEdit}/>
+                    <NavLink to={`/category/${props.id}`} id={props.id}>{props.name}</NavLink>
+                    <button className="edit" onClick={handleEdit} />
                     <button
                         className="delete"
                         name="delete"
@@ -84,13 +87,13 @@ function Category(props) {
             )
                 : (
                     <>{" "}
-                        <input type="text" value={category} onChange={handleEditChange} /><br />
-                        <button onClick={handleEdit}>Cancel</button>
+                        <input type="text" value={category} onChange={handleEditChange} />
+                        <button className="cancel" onClick={handleEdit}/>
                         <button
+                            className="save"
                             type="submit"
-                            onClick={() => handleEditSubmit(props.id)}>
-                            Save
-                        </button>
+                            onClick={() => handleEditSubmit(props.id)}
+                        />
                     </>
                 )
             }

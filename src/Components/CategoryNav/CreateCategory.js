@@ -28,6 +28,7 @@ export default function CreateCategory(props) {
         .then(newCategory => {
             setCategoryState([...categoryState, newCategory])
             history.push(`/category/${newCategory.id}`)
+            document.getElementById(`${newCategory.id}`).scrollIntoView()
         })
         .catch(error => console.log(error))
         
