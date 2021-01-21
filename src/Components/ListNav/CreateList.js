@@ -12,7 +12,7 @@ export default function CreateList(props) {
             if (props.category.id === item.id) {
                 return (
                     <option
-                        key={idx + 1} value={item.id} name={item.id} selected="selected">
+                        key={idx + 1} value={item.id} name={item.id} value="selected">
                         {item.name}
                     </option>
                 )

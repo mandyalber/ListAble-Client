@@ -9,15 +9,16 @@ import CreateCategory from '../CategoryNav/CreateCategory'
 import ListLink from '../ListNav/ListLink'
 
 //displays the dashboard containing the category nav, list nav, search and add features
-export default function Dashboard({ match }) {
-
+export default function Dashboard(props) {
+    const matchId = props.match.params || { categoryId: null }
+    
     const { listState, categoryState } = React.useContext(ListContext)
 
     const selectedCategory = categoryState.filter(cat =>
-        cat.id === parseInt(match.params.categoryId)).pop() || { id: null }
+        cat.id === parseInt(matchId.categoryId)).pop() || { id: null }
 
-    const categoryLists = !match.params.categoryId ? listState :
-        listState.filter(list => list.categoryId === parseInt(match.params.categoryId))
+    const categoryLists = !matchId.categoryId ? listState :
+        listState.filter(list => list.categoryId === parseInt(matchId.categoryId))
 
     const lists = categoryLists.length ? categoryLists.map(list =>
         <li key={list.id} className="listlink animate__animated animate__fadeIn">

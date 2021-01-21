@@ -29,25 +29,39 @@ The API supports the following requests:
 
 GET 
     /category 
+
     /category/:categoryId
+
     /list
+
     /list/:listId
+
     /item
+
     /item/:itemId
 
 POST
     /category
+
     /list
+
     /item
+
 
 PATCH
     /category/:categoryId
+
     /list/:listId
+
     /item/:itemId
+
 
 DELETE
     /category/:categoryId
+
     /list/:listId
+
     /item/:itemId
+    
 
 
