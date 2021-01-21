@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import ListContext from '../ListContext'
 import './SearchBox.css'
 
+//displays a search box allowing user to search for terms included in list title or item
 export default function SearchBox(props) {
 
     const { listState, itemState } = React.useContext(ListContext)

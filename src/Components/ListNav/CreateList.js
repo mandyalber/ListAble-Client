@@ -4,7 +4,7 @@ import config from '../../config'
 import './CreateList.css'
 import { useHistory } from 'react-router-dom'
 
-
+//displays add list input, available category to choose and sends POST request to server
 export default function CreateList(props) {
 
     function getHTMLOptions(array) {

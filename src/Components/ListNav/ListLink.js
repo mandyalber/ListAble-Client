@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ListContext from '../ListContext'
 import config from '../../config'
-import './Dashboard.css'
+import './ListLink.css'
 
-
+//displays list titles as links to list detail, along with edit and delete options
 export default function ListLink(props) {
 
     const { listState, setListState } = React.useContext(ListContext)
@@ -66,31 +66,36 @@ export default function ListLink(props) {
     }
 
     return (
-        <div>
+        <>
             {!edit ? (
                 <>
-                    <NavLink to={`/list/${props.id}`}>{props.name}</NavLink>
-                    <button className="edit-white" onClick={handleEdit} />
-                    <button
-                        className="delete-white"
-                        name="delete"
-                        value={props.id}
-                        onClick={handleDeleteClick}
-                    />
+                    <NavLink to={`/list/${props.id}`} className="link" >{props.name}</NavLink>
+                    <div className="buttons">
+                        <button className="edit-white" onClick={handleEdit} />
+                        <button
+                            className="delete-white"
+                            name="delete"
+                            value={props.id}
+                            onClick={handleDeleteClick}
+                        />
+                    </div>
                 </>
+
             ) :
                 (
                     <>{" "}
-                        <input type="text" value={list} onChange={handleEditChange} />
-                        <button className="cancel-white" onClick={handleEdit}/>
-                        <button
-                            className="save-white"
-                            type="submit"
-                            onClick={() => handleEditSubmit(props.id)}
-                        />
+                        <input type="text" value={list} onChange={handleEditChange} className="link" />
+                        <div className="buttons">
+                            <button className="cancel-white" onClick={handleEdit} />
+                            <button
+                                className="save-white"
+                                type="submit"
+                                onClick={() => handleEditSubmit(props.id)}
+                            />
+                        </div>
                     </>
                 )
             }
-        </div>
+        </>
     )
 }

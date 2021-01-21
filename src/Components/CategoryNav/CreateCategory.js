@@ -4,6 +4,7 @@ import './CategoryNav.css'
 import config from '../../config'
 import { useHistory } from 'react-router-dom'
 
+//displays add category input and sends POST request to server
 export default function CreateCategory(props) {
     const { categoryState, setCategoryState } = React.useContext(ListContext)
     let history = useHistory()

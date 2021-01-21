@@ -4,6 +4,7 @@ import ListContext from '../ListContext'
 import Category from './Category'
 import './CategoryNav.css'
 
+//displays the list of available categories
 export default function CategoryNav(props) {
 
     const { categoryState } = React.useContext(ListContext)

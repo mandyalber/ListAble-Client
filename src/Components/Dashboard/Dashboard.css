@@ -5,35 +5,8 @@
     font-family: 'Indie Flower', cursive;
 }
 
-ul.lists {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.lists li {
-    display: flex;
-    border: 1px solid #1f81b6;
-    padding: 2% 5%;
-    margin-bottom: 10px;
+.dashboard input{
     border-radius: 5px;
-    background-color: #1f81b6;
-   
-}
-.lists li:nth-child(even) {
-    border: 1px solid #e65d5d;
-    background-color: #e65d5d;
-}
-
-.lists li a {
-    display:inline-block;
-    justify-content: space-between;
-    flex-direction:row;
-    text-decoration: none; 
-    color:#fdfcf5;
-}
-.lists li button {
-    justify-content: space-between;
-    flex: row;
 }
 
 .dashboard button {
@@ -52,9 +25,9 @@ ul.lists {
     background: url("../../images/pencil.svg") no-repeat top left;
 }
 .add {
-    background: url("../../images/add.svg") no-repeat top left;
-   
+    background: url("../../images/add.svg") no-repeat top left;   
 }
+
 .delete {
     background: url("../../images/delete.svg") no-repeat top left;
 }
@@ -82,3 +55,4 @@ ul.lists {
 .cancel-white{
     background: url("../../images/close-white.svg") no-repeat top left;
 }
+

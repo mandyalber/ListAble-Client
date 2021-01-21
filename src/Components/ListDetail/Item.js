@@ -3,6 +3,7 @@ import ListContext from '../ListContext'
 import config from '../../config'
 import './Item.css'
 
+//displays list items along with check for complete, edit and delete buttons
 export default function Item(props) {
     const { itemState, setItemState } = React.useContext(ListContext)
     const [edit, setEdit] = useState(false)

@@ -1,5 +1,9 @@
-.sample-list{
+.landing {
+    margin:2%;
+}
+.sample-list {
     list-style-type:square;
+    margin-right: 30px;
 }
 
 .sample-list li {
@@ -9,4 +13,11 @@
 
 .title{
     font-family: 'Gloria Hallelujah', cursive;
+}
+
+@media only screen and (min-width: 800px){
+
+    .landing{
+        margin:auto;
+    }
 }

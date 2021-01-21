@@ -16,17 +16,16 @@ body{
 .app {
     font-family: Garamond;
     min-height: 600px;
-    max-width: 100vw;
 }
 
-header{
+header {
     font-family: 'Gloria Hallelujah', cursive;
     font-size:20px;
     text-align: center;
     padding: 1px;
     background-color: #fcbf46;
-    color:#003049;
-    
+    color:#003049; 
+    margin-bottom: 20px;   
 }
 
 main {    
@@ -34,6 +33,25 @@ main {
     min-height: 600px;
     margin: 0 auto;
     flex: 1 0 auto;
+}
+
+a.nav {
+    border-radius: 5px;
+    background-color: #e65d5d;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 5px 5px 8px black;
+    cursor: pointer;
+}
+
+a.nav:hover {
+    background-color: #e43f3f;
+}
+
+a.nav:active {
+    transform: translateY(4px);
+    box-shadow: 1px 1px 8px black;
 }
 
 .footer {    
@@ -46,11 +64,20 @@ main {
     background-color: #fcbf46;
     color:#003049;
 }
-.footer p{
+.footer p {
     flex: 1;
 }
 
 .footer div {
     font-size: 11px;
     text-decoration: none;
+}
+
+.footer a {
+    background-color: inherit;
+    color: inherit;
+}
+
+.footer a:hover {
+    color: #fff;
 }

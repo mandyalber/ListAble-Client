@@ -5,6 +5,12 @@
     text-decoration: none;
     margin-left: 50px;
 }
+
+.list-detail h3 {
+    float: right;
+    margin-right: 40px;
+}
+
 .list {
     flex: 1 0 auto;
     min-height: 600px;
@@ -26,7 +32,7 @@
     20px 20px 8px rgb(97, 95, 95);
 }
 .list li {
-    padding: 5px;  
+    padding: 4px;  
 }
 
 .list h2{
@@ -46,8 +52,9 @@ ul.todo {
 }
 
 .create-item{
-    margin-top: 25px;
-    margin-left: 100px;
+    margin-top: 40px;
+    margin-bottom: 3px;
+    text-align: center;
 }
 .create-item input{
     border-radius: 5px;
@@ -62,4 +69,8 @@ ul.todo {
     border: none;
     vertical-align: text-top;
     margin-left: 5px;
+}
+
+@media only screen and (min-width: 800px){
+
 }

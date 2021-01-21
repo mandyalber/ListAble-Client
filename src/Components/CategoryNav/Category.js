@@ -5,6 +5,7 @@ import ListContext from '../ListContext'
 import config from '../../config'
 import './CategoryNav.css'
 
+//displays each available category along with edit and delete buttons
 function Category(props) {
 
     const { categoryState, setCategoryState, listState, setListState } = React.useContext(ListContext)
@@ -72,32 +73,36 @@ function Category(props) {
     }
 
     return (
-        <div className="category">
+        <>
             {!edit ? (
-                <div>
-                    <NavLink to={`/category/${props.id}`} id={props.id}>{props.name}</NavLink>
-                    <button className="edit" onClick={handleEdit} />
-                    <button
-                        className="delete"
-                        name="delete"
-                        value={props.id}
-                        onClick={handleDeleteClick}>
-                    </button>
-                </div>
+                <>
+                    <NavLink to={`/category/${props.id}`} id={props.id} className="item">{props.name}</NavLink>
+                    <div className="item">
+                        <button className="edit" onClick={handleEdit} />
+                        <button
+                            className="delete"
+                            name="delete"
+                            value={props.id}
+                            onClick={handleDeleteClick}>
+                        </button>
+                    </div>
+                </>
             )
                 : (
                     <>{" "}
-                        <input type="text" value={category} onChange={handleEditChange} />
-                        <button className="cancel" onClick={handleEdit}/>
-                        <button
-                            className="save"
-                            type="submit"
-                            onClick={() => handleEditSubmit(props.id)}
-                        />
+                        <input type="text" value={category} onChange={handleEditChange}className="item" />
+                        <div className="item">
+                            <button className="cancel" onClick={handleEdit} />
+                            <button
+                                className="save"
+                                type="submit"
+                                onClick={() => handleEditSubmit(props.id)}
+                            />
+                        </div>
                     </>
                 )
             }
-        </div>
+        </>
     )
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import ListContext from '../ListContext'
 import config from '../../config'
 
+//displays add item input and sends POST request to server
 export default function CreateList(props) {
     const { itemState, setItemState } = React.useContext(ListContext)
 
