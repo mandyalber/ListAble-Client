@@ -4,4 +4,4 @@ import Dashboard from './Dashboard';
 
 test('renders Dashboard', () => {
   render(<BrowserRouter><Dashboard /></BrowserRouter>);  
-});
+})

@@ -4,6 +4,7 @@ import React from 'react'
     categoryState: [],
     listState: [],
     itemState: [],
+    error: '',
     setCategoryState: ()=> {},
     setListState: ()=> {},
     setItemState: ()=> {},

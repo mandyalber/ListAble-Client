@@ -11,6 +11,7 @@ function App() {
   const [categoryState, setCategoryState] = useState([])
   const [listState, setListState] = useState([])
   const [itemState, setItemState] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     Promise.all([
@@ -35,13 +36,17 @@ function App() {
         setListState(lists)
         setItemState(items)
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error)
+        setError('Server Error, could not load Categories, Lists and Items. Please try again later.')
+      })
   }, [])
 
   const contextValue = {
     categoryState,
     listState,
     itemState,
+    error,
     setCategoryState,
     setListState,
     setItemState, 

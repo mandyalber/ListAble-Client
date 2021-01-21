@@ -4,7 +4,7 @@
 }
 
 .todo li {
-    padding: 4.8px 2px;
+    padding: 4.2px;
 }
 
 .item input{
@@ -13,4 +13,6 @@
 
 .item button {
     margin-left: 5px;
+    padding: 0;
+    margin: 0;
 }

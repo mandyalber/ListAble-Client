@@ -31,9 +31,6 @@
     15.5px 15.5px #d2eef6, 
     20px 20px 8px rgb(97, 95, 95);
 }
-.list li {
-    padding: 4px;  
-}
 
 .list h2{
     text-align: center;
@@ -51,15 +48,21 @@ ul.todo {
     font-style: italic;
 }
 
-.create-item{
+.create-item {
     margin-top: 40px;
     margin-bottom: 3px;
     text-align: center;
 }
-.create-item input{
+.create-item input {
     border-radius: 5px;
 
 }
+
+.create-item button {
+    font-size:20px;
+
+}
+
 .list button {
     background-size: contain;
     cursor: pointer;
@@ -69,8 +72,4 @@ ul.todo {
     border: none;
     vertical-align: text-top;
     margin-left: 5px;
-}
-
-@media only screen and (min-width: 800px){
-
 }
