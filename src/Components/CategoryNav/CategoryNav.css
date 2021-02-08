@@ -24,8 +24,7 @@ ul.category li {
     flex-direction: column;
 }
 
-
-.item {
+.icons {
     text-align: center;
     padding-top: 3px;
     width: 100%;
