@@ -10,11 +10,12 @@ ul.category {
 }
 
 ul.category li {
-    margin-right: 5px;
+    justify-content: center;
+    margin-right: 10px;
     flex: 1;         
-    padding: 6% 3% 0 2%; 
-    width: 150px;
-    height: 120px;
+    padding: 0% 3%; 
+    width: 200px;
+    height: 100px;
     background-image: url('../../images/post-it.png');
     background-position: center; 
     background-repeat: no-repeat; 
@@ -23,9 +24,11 @@ ul.category li {
     flex-direction: column;
 }
 
-.item button {
-    padding: 10px;
-    margin: 5px;
+
+.item {
+    text-align: center;
+    padding-top: 3px;
+    width: 100%;
 }
 
 ul.category li a {

@@ -78,7 +78,7 @@ function Category(props) {
                 <>
                     <NavLink to={`/category/${props.id}`} id={props.id} className="item">{props.name}</NavLink>
                     <div className="item">
-                        <button className="edit" onClick={handleEdit} />
+                        <button className="edit" onClick={handleEdit} />{' '} 
                         <button
                             className="delete"
                             name="delete"
@@ -92,7 +92,7 @@ function Category(props) {
                     <>{" "}
                         <input type="text" value={category} onChange={handleEditChange}className="item" />
                         <div className="item">
-                            <button className="cancel" onClick={handleEdit} />
+                            <button className="cancel" onClick={handleEdit} />{' '} 
                             <button
                                 className="save"
                                 type="submit"
